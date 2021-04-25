@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 //额外服务
-$router->group(['prefix' => 'user'], function () use ($router) {
+$router->group(['prefix' => 'admin'], function () use ($router) {
     // 添加
-    $router->get('info', ['uses' => 'User\UserController@getUserInfo']);
+    $router->get('index', ['uses' => 'Admin\AdminController@index']);
 
 });
