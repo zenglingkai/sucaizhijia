@@ -2,35 +2,122 @@
 
 namespace App\Events\User;
 
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use App\Events\Event;
 
-class AddUserEvent
+class AddUserEvent extends Event
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    /**
+     * @var int
+     */
+    private $id;
 
     /**
-     * Create a new event instance.
-     *
-     * @return void
+     * @var int
      */
-    public function __construct()
+    private $username;
+
+    /**
+     * @var int
+     */
+    private $real_name;
+
+    /**
+     * @var int
+     */
+    private $password;
+
+    /**
+     * @var int
+     */
+    private $phone;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
-        //
+        return $this->id;
     }
 
     /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return int
      */
-    public function broadcastOn()
+    public function getPhone(): int
     {
-        return new PrivateChannel('channel-name');
+        return $this->phone;
     }
+
+    /**
+     * @return int
+     */
+    public function getUsername(): int
+    {
+        return $this->username;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRealName(): int
+    {
+        return $this->real_name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPassword(): int
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param int $phone
+     */
+    public function setPhone(int $phone): void
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @param int $username
+     */
+    public function setUsername(int $username): void
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @param int $real_name
+     */
+    public function setRealName(int $real_name): void
+    {
+        $this->real_name = $real_name;
+    }
+
+    /**
+     * @param int $password
+     */
+    public function setPassword(int $password): void
+    {
+        $this->password = $password;
+    }
+
+    public function __construct(int $id, string $username, string $real_name, string $password, string $phone)
+    {
+        $this->setId($id);
+        $this->setPassword($password);
+        $this->setPhone($phone);
+        $this->setRealName($real_name);
+        $this->setUsername($username);
+    }
+
 }

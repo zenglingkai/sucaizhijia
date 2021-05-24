@@ -9,12 +9,13 @@ class BaseModel extends Model
 {
 
     protected $is_del = false;
+
     /**
      * @param $where
      * @param $data
      * @return bool
      */
-    public function updateWhere($where, $data):bool
+    public function updateWhere($where, $data): bool
     {
         if (empty($where)) return false;
         $query = $this->newQuery();
@@ -33,7 +34,7 @@ class BaseModel extends Model
             }
         }
         if ($update_data && $is_update) {
-            return $query->update($update_data)?true:false;
+            return $query->update($update_data) ? true : false;
         }
     }
 
@@ -41,7 +42,7 @@ class BaseModel extends Model
      * @param $data
      * @return bool
      */
-    public function addAll($data):bool
+    public function addAll($data): bool
     {
         $query = $this->newQuery();
         return $query->insert($data);
@@ -71,10 +72,9 @@ class BaseModel extends Model
      */
     public function getAll()
     {
-
-        if ($this->is_del){
+        if ($this->is_del) {
             return $this->newQuery()->where('is_del', '=', 0)->get()->toArray();
-        }else{
+        } else {
             return $this->newQuery()->get()->toArray();
         }
 

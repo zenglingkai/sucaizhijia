@@ -2,11 +2,14 @@
 
 namespace App\Listeners\User;
 
+use App\Events\User\AddUserEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class AddUserListener
+class AddUserListener implements ShouldQueue
 {
+    use InteractsWithQueue;
+
     /**
      * Create the event listener.
      *
@@ -14,17 +17,15 @@ class AddUserListener
      */
     public function __construct()
     {
-        //
+
     }
 
+
     /**
-     * Handle the event.
-     *
-     * @param  object  $event
-     * @return void
+     * @param AddUserEvent $event
      */
-    public function handle($event)
+    public function handle(AddUserEvent $event)
     {
-        //
+
     }
 }

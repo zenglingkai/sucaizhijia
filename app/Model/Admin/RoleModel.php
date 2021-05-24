@@ -6,7 +6,7 @@ use App\Model\BaseModel;
 
 class RoleModel extends BaseModel
 {
-    protected $table = 'user_tbl.roles_tbl';  // 表名
+    protected $table = 'user_db.roles_tbl';  // 表名
 
     protected $fillable = [
         'id',

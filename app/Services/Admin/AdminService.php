@@ -13,4 +13,9 @@ class AdminService
         $AdminModel = new AdminModel();
         return $AdminModel->getAll();
     }
+
+    public function addAdmin()
+    {
+
+    }
 }

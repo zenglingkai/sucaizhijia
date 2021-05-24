@@ -44,13 +44,30 @@ return [
         ],
 
         'mysql' => [
+            'read' => [
+                [
+                    'host' => env('SLAVE_DB_HOST', '3306'),
+                    'port' => env('SLAVE_DB_PORT', '3340'),
+                    'username' => env('SLAVE_DB_USERNAME', 'forge'),
+                    'password' => env('SLAVE_DB_PASSWORD', ''),
+                ]
+            ],
+            'write' => [
+                [
+                    'host' => env('MASTER_DB_HOST', '3306'),
+                    'port' => env('MASTER_DB_PORT', '3306'),
+                    'username' => env('MASTER_DB_USERNAME', 'forge'),
+                    'password' => env('MASTER_DB_PASSWORD', ''),
+                ]
+            ],
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
+
+//            'host' => env('DB_HOST', '127.0.0.1'),
+//            'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+//            'username' => env('DB_USERNAME', 'forge'),
+//            'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -123,7 +140,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'predis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [

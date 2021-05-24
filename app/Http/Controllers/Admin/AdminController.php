@@ -2,34 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Admin;
-use App\Role;
 use App\Services\Admin\AdminService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use validate;
-
+use Illuminate\Support\Facades\Cache;
 
 class AdminController extends Controller
 {
     //管理员列表
     public function index()
     {
-        $search_items = [
-            'name' => [
-                'type' => 'like',
-                'form' => 'text',
-                'label' => '姓名',
-            ],
-            'mobile' => [
-                'type' => 'like',
-                'form' => 'text',
-                'label' => '手机号',
-            ],
-            'created_at' => [
-                'type' => 'date',
-            ],
-        ];
 
         $AdminService = new AdminService();
         $data = $AdminService->getAdminList();
