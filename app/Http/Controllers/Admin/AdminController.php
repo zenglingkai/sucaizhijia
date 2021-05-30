@@ -15,10 +15,10 @@ class AdminController extends Controller
 
         $AdminService = new AdminService();
         $data = $AdminService->getAdminList();
-dd($data);
+
         $roles = $data;
 
-        return view('admin.admin.index', compact('data', 'roles'));
+        return view('admin.index', compact('data', 'roles'));
     }
 
     //管理员编辑页面
